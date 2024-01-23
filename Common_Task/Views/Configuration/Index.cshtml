@@ -1,0 +1,34 @@
+﻿@model ConfigurationItem
+<h2>Configuration Index</h2>
+
+@if (Model != null)
+{
+    <dl>
+        <dt>Key:</dt>
+        <dd>@Model.Key</dd>
+
+        <dt>Value:</dt>
+        <dd>@Model.Value</dd>
+
+        <dt>Children:</dt>
+        <dd>
+            @if (Model.Children != null && Model.Children.Any())
+            {
+                <ul>
+                    @foreach (var child in Model.Children)
+                    {
+                        <li>@child.Key: @child.Value</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p>No children</p>
+            }
+        </dd>
+    </dl>
+}
+else
+{
+    <p>No configuration found.</p>
+}
